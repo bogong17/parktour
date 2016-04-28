@@ -39,6 +39,10 @@ a:hover {
   font-weight: 600;
 }
 
+#navbar{
+  margin:0;
+  width:100%;
+}
 .carousel-fade .carousel-inner .item {
   opacity: 0;
   transition-property: opacity;
