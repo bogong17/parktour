@@ -1,0 +1,53 @@
+<% include ../partials/header %> 
+
+ <div class="container">
+     <header class="jumbotron">
+         <div class="container">
+             <h1>Welcome to Park Tour!</h1>
+             <p>View hikers' shots on national parks from all over the world</p>
+             <p>
+                <a class="btn btn-primary btn-large" href="/parks/new">Add New National Park Photo</a>
+             </p>
+         </div>
+     </header>
+     
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% parks.forEach(function(park){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail th">
+                    <div class="image-wrap">
+                   <img class="img-responsive " src="<%= park.image %>">
+                   </div>
+                   <div class="caption-full">
+                       <h4><%= park.name %>  <em><small><%= park.state %></small></em></h4>
+                       <p>
+                        <%  if( park.rate === "1")  { %> 
+                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                       <% } %>
+                       <%  if( park.rate === "2") { %> 
+                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                       <% } %>
+                       <%  if( park.rate === "3") { %>
+                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                       <% } %>
+                       <%  if( park.rate === "4") { %>
+                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                       <% } %>
+                       <%  if( park.rate === "5") { %>
+                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                       <% } %>    
+                       </p>
+                   </div>
+                   <p>
+                       <a href="/parks/<%= park._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+
+
+
+<% include ../partials/footer %>

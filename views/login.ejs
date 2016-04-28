@@ -1,0 +1,15 @@
+<% include ./partials/header %>
+
+
+<div class="container logintitle"><h1>Login</h1></div>
+
+<div class="container well">
+<form action="/login" method="POST">
+    <input class="well well-sm" id="loginform" type="text" name="username" placeholder="username" required>
+    <input class="well well-sm" id="loginform" type="password" name="password" placeholder="password" required>
+    <input type="submit"  type="button" class="btn btn-primary navbar-btn loginbtn">
+</form>    
+</div>
+
+
+<% include ./partials/footer %>

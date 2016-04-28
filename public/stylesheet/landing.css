@@ -1,0 +1,205 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+    height:100%;
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #161616;
+}
+
+h1 {
+  font-size: 5em;
+  font-weight: 600;
+      text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                 0px 8px 13px rgba(0,0,0,0.1),
+                 0px 18px 23px rgba(0,0,0,0.1);
+}
+
+h2 {
+  font-size: 2.0rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.sub-header {
+  font-size: 2.8rem;
+}
+
+a {
+  font-weight: 600;
+}
+a:hover {
+  font-weight: 600;
+}
+
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+.carousel {
+    margin-top: -20px;
+}
+
+
+@media all and (transform-3d), (-webkit-transform-3d) {
+  .carousel-fade .carousel-inner > .item.next,
+  .carousel-fade .carousel-inner > .item.active.right {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .carousel-fade .carousel-inner > .item.prev,
+  .carousel-fade .carousel-inner > .item.active.left {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .carousel-fade .carousel-inner > .item.next.left,
+  .carousel-fade .carousel-inner > .item.prev.right,
+  .carousel-fade .carousel-inner > .item.active {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+.carousel-caption {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  font-size: 17px;
+}
+
+html,
+body,
+.carousel,
+.carousel-inner,
+.carousel-inner .item {
+    height:100vh;
+}
+
+
+
+.carousel-inner {
+    width:100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.vertical-align-caption {
+  position: absolute;
+  top: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+}
+
+.caption-wrap {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.slide{
+  width:100%;
+}
+
+.caption-wrap a {
+  text-transform: uppercase;
+  margin-top: 15px;
+  background: none;
+  border: 2px solid white;
+  padding: 15px 40px;
+}
+.caption-wrap a:hover {
+  color: #2c3e50;
+  background: white;
+  border: 2px solid white;
+}
+
+
+
+.navbar-main {
+  margin-bottom: 0;
+}
+
+
+.tent-icon {
+  font-size: 1.5em;
+  top: 10px;
+}
+
+
+.item:nth-child(1) {
+  background: url("https://images.unsplash.com/photo-1426604966848-d7adac402bff?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1800.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.item:nth-child(2) {
+  background: url("https://images.unsplash.com/photo-1457131666026-a591bab092dc?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1800.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.item:nth-child(3) {
+  background: url("https://images.unsplash.com/photo-1458888082704-8b110c0a5f15?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1800.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+.hr1 {
+    width: 60%;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.hr2 {
+    width: 85%;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.hr3 {
+    width: 63%;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}

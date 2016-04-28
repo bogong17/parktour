@@ -1,0 +1,122 @@
+body { 
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    padding-top: 70px; 
+}
+
+a{
+    color: inherit;
+}
+
+.jumbotron {
+  color: #2c3e50;
+  background: #ecf0f1;
+
+}
+
+.navbar-inverse {
+  background: #2c3e50;
+  color: white;
+}
+.navbar-inverse .navbar-brand, .navbar-inverse a{
+  color:white;
+}
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
+} 
+
+.th{
+    padding:0;
+    border-color: rgba(0,0,0,0.2);
+    max-width: 500px;
+    width: 100%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.image-wrap {
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 50%;
+}
+.image-wrap img {
+    max-width: 100%;
+}
+
+
+.thumbnail .caption-full{
+    padding:0;
+    padding:9px;
+}
+
+
+#delete-form {
+    display: inline;
+}
+
+
+
+.container.well{
+    width:60%;
+    margin: 0 auto;
+}
+
+
+#loginform{
+    margin: 5px auto;
+    width: 100%;
+}
+
+
+.loginbtn{
+    width:100%;
+    margin: 20px auto;
+}
+
+.logintitle{
+    text-align: center;
+}
+
+.container.footer{
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.btnInfo{
+    margin: 0 20px 20px 20px;
+    text-align: right;
+}
+
+#thumbT {
+    padding:0;
+    text-align: center;
+    width: 20%;
+    height: 10px;
+    margin-top: 10px;
+}
+
+
+.footer i{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 0;
+}
+
+.submit {
+   width: 30%; 
+   margin: 25px auto;
+}
+
+.h1t{
+  text-align: center;
+}
+
+.lead{
+    color:#fff;
+    text-align: center;
+   text-shadow: 0px 4px 3px rgba(255,255,255,0.4),
+             0px 8px 13px rgba(255,255,255,0.1),
+             0px 18px 23px rgba(255,255,255,0.1);
+    border: 2px solid;
+    border-radius:50px 10px;
+    background-color: #2c3e50;
+    padding: 20px;
+}
