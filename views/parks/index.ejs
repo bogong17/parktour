@@ -4,16 +4,21 @@
      <header class="jumbotron">
          <div class="container">
              <h1>Welcome to Park Tour!</h1>
-             <p>View hikers' shots on national parks from all over the world</p>
+             <p>View hikers' shots and reviews on national parks from all over the world</p>
              <p>
                 <a class="btn btn-primary btn-large" href="/parks/new">Add New National Park Photo</a>
              </p>
          </div>
      </header>
      
-     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+     <div class="row text-center">
+         <% parks.sort(function(a, b){ %>
+            <%    if(a.author.username > b.author.username) return -1;%>
+            <%    if(a.author.username < b.author.username) return 1;%>
+            <%    return 0;%>
+            <%})%>
         <% parks.forEach(function(park){ %>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="thumbnail th">
                     <div class="image-wrap">
                    <img class="img-responsive " src="<%= park.image %>">
