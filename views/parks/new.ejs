@@ -5,16 +5,16 @@
         <div class="submit well well-lg">
             <form action="/parks" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="name" placeholder="name">
+                    <input class="form-control" type="text" name="park[name]" placeholder="name">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="image" placeholder="image url">
+                    <input class="form-control" type="text" name="park[image]" placeholder="image url">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="state" placeholder="park state">
+                    <input class="form-control" type="text" name="park[state]" placeholder="park state">
                 </div>
                 <div class="form-group">
-                    <select name="rate" class="selectpicker form-control">
+                    <select name="park[rate]" class="selectpicker form-control">
                       <option selected disabled>--rate--</option>  
                       <option value="5">5</option>                      
                       <option value="4">4</option>
@@ -24,7 +24,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" rows="6"  name="description" placeholder="description"></textarea>
+                    <textarea class="form-control" rows="6"  name="park[description]" placeholder="description"></textarea>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Submit!</button>

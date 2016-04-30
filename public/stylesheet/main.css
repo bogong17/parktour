@@ -7,10 +7,15 @@ a{
     color: inherit;
 }
 
+.container{
+    width:80%;
+    
+}
 .jumbotron {
-  color: #2c3e50;
-  background: #ecf0f1;
-
+    height: 400px;
+  color: #fff;
+  /*background: #ecf0f1;*/
+  background: url("http://live.indivisible.us/wp-content/uploads/2016/01/Rocky-Mountains-4.jpg") no-repeat center center;
 }
 
 .navbar-inverse {
@@ -52,9 +57,9 @@ a{
 
 
 
-.container.well{
-    width:60%;
-    margin: 0 auto;
+.well{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
 }
 
 

@@ -4,7 +4,7 @@ var parkSchema = new mongoose.Schema({
    name: String,
    image: String,
    state: String,
-   rate: String,
+   rates: new Array(),
    description: String,
    author: {
       id:{

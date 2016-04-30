@@ -18,26 +18,49 @@ router.get("/", function(req, res){
 //CREATE - add new campground to DB
 router.post("/", middleware.isLoggedIn, function(req, res){
     // get data from form and add to campgrounds array
-    var name = req.body.name;
-    var image = req.body.image;
-    var state = req.body.state;
-    var rate = req.body.rate;
-    var desc = req.body.description;
-    var author = {
-        id: req.user._id,
-        username: req.user.username
-    };
-    var newPark = {name: name, image: image, state: state, rate: rate, description: desc, author: author};
-    // Create a new campground and save to DB
-    Park.create(newPark, function(err, newlyCreated){
-        if(err){
-           req.flash("error", err.message);
-        } else {
-            //redirect back to campgrounds page
-            req.flash("success", "SUCCESSFULLY CREATED A NEW CAMP");
-            res.redirect("/parks");
-        }
-    });
+    // var name = req.body.name;
+    // var image = req.body.image;
+    // var state = req.body.state;
+    // var rates = req.body.rates;
+    // var desc = req.body.description;
+    // var author = {
+    //     id: req.user._id,
+    //     username: req.user.username
+    // };
+    // var newPark = {name: name, image: image, state: state, rates: rates, description: desc, author: author};
+    // // Create a new campground and save to DB
+    
+    Park.create(req.body.park, function(err, park){
+           if(err){
+                req.flash("error", err.message);
+           } else {
+               //add username and id to comment
+               park.author.id = req.user._id;
+               park.author.username = req.user.username;
+               park.name = req.body.park.name;
+               park.image = req.body.park.image;
+               park.state = req.body.park.state;
+               park.description = req.body.park.description;
+               //save comment
+               park.rates.push(req.body.park.rate);
+               park.save();
+               req.flash("success", "SUCCESSFULLY ADDED A NEW PARK");
+               res.redirect('/parks/');
+               console.log(park);
+           }
+        });
+    
+    
+    
+    // Park.create(newPark, function(err, newlyCreated){
+    //     if(err){
+    //       req.flash("error", err.message);
+    //     } else {
+    //         //redirect back to campgrounds page
+    //         req.flash("success", "SUCCESSFULLY CREATED A NEW CAMP");
+    //         res.redirect("/parks");
+    //     }
+    // });
 });
 
 //NEW - show form to create new campground
@@ -52,7 +75,7 @@ router.get("/:id", function(req, res){
         if(err){
             req.flash("error", err.message);
         } else {
-            console.log(foundPark)
+            console.log(foundPark);
             //render show template with that campground
             res.render("parks/show", {park: foundPark});
         }

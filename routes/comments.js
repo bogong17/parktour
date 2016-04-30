@@ -32,14 +32,17 @@ router.post("/", middleware.isLoggedIn, function(req, res){
            } else {
                //add username and id to comment
                comment.author.id = req.user._id;
-               comment.author.username = req.user.username
+               comment.author.username = req.user.username;
+               comment.date = new Date().toLocaleDateString();
                //save comment
                comment.save();
-               
                park.comments.push(comment);
+               park.rates.push(req.body.comment.rate);
                park.save();
                req.flash("success", "SUCCESSFULLY ADDED COMMENT");
+               console.log(comment);
                res.redirect('/parks/' + park._id);
+               
            }
         });
        }
