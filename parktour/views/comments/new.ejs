@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">Add New Comment to <%= park.name %></h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/parks/<%= park._id %>/comments" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="comment[text]" placeholder="text">
+                </div>
+                <div class="form-group">
+                    <select name="comment[rate]" class="selectpicker form-control">
+                      <option selected disabled>--rate--</option>  
+                      <option value="5">5</option>                      
+                      <option value="4">4</option>
+                      <option value="3">3</option>
+                      <option value="2">2</option>
+                      <option value="1">1</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/parks">Go Back</a>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>
+

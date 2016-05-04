@@ -1,0 +1,111 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row well">
+        <div class="col-md-3 ">
+            <div>
+                <a class="btn btn-default" href="/parks">go back</a>
+                <h4 class="lead"><strong> <%=park.name%> National Park</strong></h4>
+
+            </div>
+            <div class="list-group">
+                <li class="list-group-item"><a href="https://www.nps.gov/<%= park.name.replace(" ", "")%>/planyourvisit/campgrounds.htm">Campground Reserve</a></li>
+                <li class="list-group-item"><a href="https://www.nps.gov/<%= park.name.replace(" ", "")%>/planyourvisit/hiking.htm">Hiking Trail</a></li>
+                <li class="list-group-item active"><a href="https://www.nps.gov/<%= park.name.replace(" ", "")%>">More Info</a></li>
+             </div>
+             <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+             <div style='overflow:hidden;height:300px;width:auto;'>
+                 <div id='gmap_canvas' style='height:300px;width:auto;'>
+                     
+                 </div>
+                <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+            </div>
+            <script type='text/javascript'>function init_map(){var myOptions = {zoom:11,center:new google.maps.LatLng(37.8651011,-119.53832940000001),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(37.8651011,-119.53832940000001)});infowindow = new google.maps.InfoWindow({content:'<strong>Yosemite</strong><br>yosemite national park<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+        </div>
+        
+        <div class="col-md-9 ">
+            <div class="thumbnail">
+                <img class="img-responsive " src="<%= park.image %>">
+                <div class="caption-full">
+                    <h4 class="pull-right"><%=park.state%></h4>
+                    <h4><a>
+                       <% var total = 0; %>
+                        <%for(var i = 0; i < park.rates.length; i++) {%>
+                            <%total += Number(park.rates[i]);%>
+                        <%}%>
+                       <% var avg = Math.round(total / park.rates.length);%>
+
+                        <%  if( avg === 1)  { %> 
+                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                       <% } %>
+                       <%  if( avg === 2) { %> 
+                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                       <% } %>
+                       <%  if( avg === 3) { %>
+                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                       <% } %>
+                       <%  if( avg === 4) { %>
+                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                       <% } %>
+                       <%  if( avg === 5) { %>
+                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                       <% } %>    
+        
+                    </a></h4>
+                    <p><%= park.description %></p>
+                    <p>
+                        <em>Submitted by <%= park.author.username%></em>
+                    </p>
+                    <% if(currentUser && park.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/parks/<%= park._id %>/edit">Edit</a>
+                        <form id="delete-form" action="/parks/<%= park._id %>?_method=DELETE" method="POST">
+                            <button  class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success" href="/parks/<%= park._id %>/comments/new">Add New Comment</a>
+                </div>
+                <hr>
+                <% park.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong><%= comment.author.username %></strong>
+                            <span class="pull-right"><%=comment.date%></span>
+
+                            <%  if( comment.rate === "1")  { %> 
+                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                           <% } %>
+                           <%  if( comment.rate === "2") { %> 
+                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                           <% } %>
+                           <%  if( comment.rate === "3") { %>
+                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                           <% } %>
+                           <%  if( comment.rate === "4") { %>
+                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                           <% } %>
+                           <%  if( comment.rate === "5") { %>
+                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 
+                           <% } %>    
+                                <p><%= comment.text %></p> 
+
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                            <a class="btn btn-xs btn-warning" href="/parks/<%= park._id %>/comments/<%= comment._id %>/edit">
+                                Edit
+                            </a>
+                            <form id="delete-form" action="/parks/<%= park._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                <button  class="btn btn-xs btn-danger">Delete</button>
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>
