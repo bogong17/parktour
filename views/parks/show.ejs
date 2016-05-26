@@ -1,4 +1,6 @@
 <% include ../partials/header %>
+
+
 <div class="container">
     <div class="row well">
         <div class="col-md-3 ">
@@ -7,19 +9,12 @@
                 <h4 class="lead"><strong> <%=park.name%> National Park</strong></h4>
 
             </div>
+            <%console.log("======")%>
             <div class="list-group">
                 <li class="list-group-item"><a href="https://www.nps.gov/<%= park.name.replace(" ", "")%>/planyourvisit/campgrounds.htm">Campground Reserve</a></li>
                 <li class="list-group-item"><a href="https://www.nps.gov/<%= park.name.replace(" ", "")%>/planyourvisit/hiking.htm">Hiking Trail</a></li>
                 <li class="list-group-item active"><a href="https://www.nps.gov/<%= park.name.replace(" ", "")%>">More Info</a></li>
              </div>
-             <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
-             <div style='overflow:hidden;height:300px;width:auto;'>
-                 <div id='gmap_canvas' style='height:300px;width:auto;'>
-                     
-                 </div>
-                <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
-            </div>
-            <script type='text/javascript'>function init_map(){var myOptions = {zoom:11,center:new google.maps.LatLng(37.8651011,-119.53832940000001),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(37.8651011,-119.53832940000001)});infowindow = new google.maps.InfoWindow({content:'<strong>Yosemite</strong><br>yosemite national park<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
         </div>
         
         <div class="col-md-9 ">

@@ -45,8 +45,8 @@ middlewareObj.checkCampOwnership = function(req, res, next){
     } else{
         req.flash("error", "YOU NEED TO LOG IN TO DO THAT");
         res.redirect("back");
-    };  
-}
+    }
+};
 
 
 
@@ -57,8 +57,11 @@ middlewareObj.isLoggedIn = function(req, res, next){
     }
     req.flash("error", "YOU HAVE TO LOG IN");
     res.redirect("/login");
-}
+};
 
-
+middlewareObj.caseInsensitive = function(req, res, next) {
+    console.log(req.body.username.toLowerCase());
+    next();
+};
 
 module.exports = middlewareObj;
