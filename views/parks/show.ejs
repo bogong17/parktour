@@ -11,8 +11,13 @@
             </div>
             <%console.log("======")%>
             <div class="list-group">
-                <li class="list-group-item"><a href="https://www.nps.gov/<%= park.name.replace(" ", "")%>/planyourvisit/campgrounds.htm">Campground Reserve</a></li>
-                <li class="list-group-item"><a href="https://www.nps.gov/<%= park.name.replace(" ", "")%>/planyourvisit/hiking.htm">Hiking Trail</a></li>
+                <%console.log(sunriseStr)%>
+                <li class="list-group-item"><strong>Sunrise:</strong>  <%= sunriseStr%></li>
+                <li class="list-group-item"><strong>Sunset:</strong>  <%= sunsetStr%></li>
+                <li class="list-group-item"><strong>Temperature:</strong>  <%= temp%> °F</li>
+                <li class="list-group-item"><strong>Wind:</strong>  <%= wind%></li>
+                <li class="list-group-item active"><a href="https://www.nps.gov/<%= park.name.replace(" ", "")%>/planyourvisit/campgrounds.htm">Campground Reserve</a></li>
+                <li class="list-group-item active"><a href="https://www.nps.gov/<%= park.name.replace(" ", "")%>/planyourvisit/hiking.htm">Hiking Trail</a></li>
                 <li class="list-group-item active"><a href="https://www.nps.gov/<%= park.name.replace(" ", "")%>">More Info</a></li>
              </div>
         </div>

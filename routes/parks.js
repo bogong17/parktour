@@ -1,7 +1,15 @@
 var express = require("express");
 var router  = express.Router();
 var Park = require("../models/park");
-var middleware = require("../middleware")
+var middleware = require("../middleware");
+
+var request = require("request");
+    
+var geocoderProvider = 'google';
+var httpAdapter = 'http';
+var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter);
+var SunCalc = require('suncalc');
+var Weather = require('weather-js');
 
 //INDEX - show all campgrounds
 router.get("/", function(req, res){
@@ -68,6 +76,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
    res.render("parks/new"); 
 });
 
+
 // SHOW - shows more info about one campground
 router.get("/:id", function(req, res){
     //find the campground with provided ID
@@ -75,9 +84,33 @@ router.get("/:id", function(req, res){
         if(err){
             req.flash("error", err.message);
         } else {
-            console.log(foundPark);
-            //render show template with that campground
-            res.render("parks/show", {park: foundPark});
+            
+            geocoder.geocode(foundPark.name, function(err2, res2) {
+                if(err2) {
+                    console.log(err2);
+                } else { 
+                    
+                    
+                     // get today's sunlight times for London
+                    var times = SunCalc.getTimes(new Date(), res2[0].latitude, res2[0].longitude);
+                    // format sunrise time from the Date object
+                    var sr = times.sunrise.toUTCString();
+                    var ss = times.sunset.toUTCString();
+                    console.log(times.sunrise);
+                    
+                    Weather.find({search: foundPark.name, degreeType: 'F'}, function(err, result) {
+                      if(err) console.log(err);
+                      var temp = result[0].current.temperature;
+                      var wind = result[0].current.winddisplay;
+                      //render show template with that campground
+                     res.render("parks/show", {park: foundPark, sunriseStr: sr, sunsetStr: ss, temp: temp, wind: wind});  
+                      console.log(result);
+                    });
+                     
+                }
+            });
+            
+
         }
     });
 });

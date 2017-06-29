@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node app.js"
+    "start": "node app.js"
   },
   "author": "Bo",
   "license": "ISC",
@@ -17,8 +17,13 @@
     "express-session": "^1.13.0",
     "method-override": "^2.3.5",
     "mongoose": "^4.4.13",
+    "node-geocoder": "^3.10.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^4.0.0"
+    "passport-local-mongoose": "^4.0.0",
+    "request": "^2.72.0",
+    "suncalc": "^1.7.0",
+    "weather": "^0.1.0",
+    "weather-js": "^1.0.2"
   }
 }
